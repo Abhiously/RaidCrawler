@@ -1,4 +1,4 @@
-﻿using PKHeX.Core;
+using PKHeX.Core;
 using PKHeX.Drawing;
 using PKHeX.Drawing.PokeSprite;
 using RaidCrawler.Properties;
@@ -304,8 +304,8 @@ namespace RaidCrawler
             int BaseDelay = (int)Settings.Default.CfgBaseDelay;
             await Click(LSTICK, 0_050 + BaseDelay, token).ConfigureAwait(false); // Sometimes it seems like the first command doesn't go through so send this just in case
             // HOME Menu
-            await Click(HOME, 1_800 + BaseDelay, token).ConfigureAwait(false);
-            await Click(DDOWN, 0_200 + BaseDelay, token).ConfigureAwait(false);
+            await Click(HOME, 1_000 + BaseDelay, token).ConfigureAwait(false);
+            await Click(DDOWN, 0_300 + BaseDelay, token).ConfigureAwait(false);
             for (int i = 0; i < 5; i++) await Click(DRIGHT, 0_100 + BaseDelay, token).ConfigureAwait(false);
             await Click(A, 1_000 + BaseDelay, token).ConfigureAwait(false);
             // Scroll to bottom
@@ -322,8 +322,8 @@ namespace RaidCrawler
             for (int i = 0; i < 6; i++) await Click(DRIGHT, 0_100 + BaseDelay, token).ConfigureAwait(false);
             await Click(A, 0_500 + BaseDelay, token).ConfigureAwait(false);
             // Return to game
-            await Click(HOME, 2_500 + BaseDelay, token).ConfigureAwait(false);
-            await Click(HOME, 4_000 + BaseDelay, token).ConfigureAwait(false);
+            await Click(HOME, 0_800 + BaseDelay, token).ConfigureAwait(false);
+            await Click(HOME, 1_000 + BaseDelay, token).ConfigureAwait(false);
         }
 
         private async void ButtonAdvanceDate_Click(object sender, EventArgs e)
@@ -376,7 +376,6 @@ namespace RaidCrawler
             offset = await OffsetUtil.GetPointerAddress(Offsets.RaidBlockPointer, CancellationToken.None);
 
             Raids.Clear();
-            index = 0;
 
             ConnectionStatusText.Text = "Reading raid block...";
             Raid raid;
